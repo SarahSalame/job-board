@@ -1,0 +1,888 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+
+  background: #f7f8f5;
+  color: #111827;
+
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   HERO BACKGROUND
+========================= */
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.4;
+
+  background-image:
+    linear-gradient(
+      rgba(15, 23, 42, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.045) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    transparent 88%
+  );
+}
+
+
+/* =========================
+   HERO BLOBS
+========================= */
+
+.hero-blob {
+  position: absolute;
+
+  border-radius: 9999px;
+
+  pointer-events: none;
+
+  filter: blur(80px);
+
+  opacity: 0.32;
+
+  animation:
+    heroBlobFloat
+    14s
+    ease-in-out
+    infinite;
+}
+
+
+/* Green */
+
+.hero-blob-one {
+  width: 430px;
+  height: 430px;
+
+  background: #9ee7ba;
+
+  top: -190px;
+  left: -120px;
+}
+
+
+/* Purple */
+
+.hero-blob-two {
+  width: 380px;
+  height: 380px;
+
+  background: #c7bbff;
+
+  top: 120px;
+  right: -130px;
+
+  animation-delay: -4s;
+}
+
+
+/* Blue */
+
+.hero-blob-three {
+  width: 300px;
+  height: 300px;
+
+  background: #a9ddff;
+
+  bottom: -160px;
+  left: 42%;
+
+  animation-delay: -8s;
+}
+
+
+@keyframes heroBlobFloat {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  33% {
+    transform:
+      translate3d(45px, -35px, 0)
+      scale(1.08);
+  }
+
+  66% {
+    transform:
+      translate3d(-35px, 40px, 0)
+      scale(0.94);
+  }
+
+}
+
+
+/* =========================
+   HERO DECORATIVE CIRCLES
+========================= */
+
+.hero-circle {
+  position: absolute;
+
+  border-radius: 9999px;
+
+  border: 1px solid
+    rgba(19, 138, 67, 0.12);
+
+  pointer-events: none;
+
+  animation:
+    circleFloat
+    18s
+    ease-in-out
+    infinite;
+}
+
+
+.hero-circle-one {
+  width: 190px;
+  height: 190px;
+
+  left: 8%;
+  top: 28%;
+}
+
+
+.hero-circle-two {
+  width: 280px;
+  height: 280px;
+
+  right: 8%;
+  bottom: 10%;
+
+  animation-delay: -7s;
+}
+
+
+@keyframes circleFloat {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translate3d(20px, -25px, 0)
+      rotate(8deg);
+  }
+
+}
+
+
+/* =========================
+   HERO FLOATING DOTS
+========================= */
+
+.hero-dot {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 9999px;
+
+  background: #138a43;
+
+  opacity: 0.25;
+
+  pointer-events: none;
+
+  animation:
+    dotFloat
+    7s
+    ease-in-out
+    infinite;
+}
+
+
+.hero-dot-one {
+  top: 25%;
+  left: 22%;
+}
+
+
+.hero-dot-two {
+  top: 38%;
+  right: 20%;
+
+  animation-delay: -2s;
+}
+
+
+.hero-dot-three {
+  bottom: 18%;
+  left: 14%;
+
+  animation-delay: -4s;
+}
+
+
+@keyframes dotFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-25px);
+
+    opacity: 0.55;
+  }
+
+}
+
+
+/* =========================
+   MOVING GREEN RIBBON
+========================= */
+
+.ticker-wrapper {
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: #138a43;
+
+  color: white;
+
+  transform: rotate(-1.5deg);
+
+  margin: 0 -3vw;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.15);
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.15);
+
+  z-index: 5;
+}
+
+
+.ticker-track {
+
+  display: flex;
+
+  width: max-content;
+
+  gap: 34px;
+
+  padding: 16px 0;
+
+  direction: ltr;
+
+  animation:
+    tickerSlide
+    22s
+    linear
+    infinite;
+
+  will-change: transform;
+}
+
+
+.ticker-track span {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 34px;
+
+  white-space: nowrap;
+
+  font-size: 1.35rem;
+
+  font-weight: 900;
+}
+
+
+.ticker-track span::after {
+
+  content: "✦";
+
+  font-size: 0.9rem;
+
+  color:
+    rgba(255, 255, 255, 0.65);
+}
+
+
+@keyframes tickerSlide {
+
+  from {
+    transform:
+      translateX(0);
+  }
+
+  to {
+    transform:
+      translateX(50%);
+  }
+
+}
+
+
+/* =========================
+   JOBS SECTION BACKGROUND
+========================= */
+
+.jobs-background {
+
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.jobs-grid {
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.35;
+
+  background-image:
+    linear-gradient(
+      rgba(15, 23, 42, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 15%,
+    black 80%,
+    transparent
+  );
+}
+
+
+/* =========================
+   JOBS ORBS
+========================= */
+
+.jobs-orb {
+
+  position: absolute;
+
+  border-radius: 9999px;
+
+  filter: blur(70px);
+
+  opacity: 0.28;
+
+  pointer-events: none;
+
+  animation:
+    jobsOrbFloat
+    16s
+    ease-in-out
+    infinite;
+}
+
+
+.jobs-orb-one {
+
+  width: 360px;
+  height: 360px;
+
+  background: #b8efce;
+
+  top: 50px;
+  right: -120px;
+}
+
+
+.jobs-orb-two {
+
+  width: 300px;
+  height: 300px;
+
+  background: #d8d0ff;
+
+  top: 420px;
+  left: -100px;
+
+  animation-delay: -5s;
+}
+
+
+.jobs-orb-three {
+
+  width: 260px;
+  height: 260px;
+
+  background: #b9e5ff;
+
+  right: 35%;
+  bottom: 100px;
+
+  animation-delay: -9s;
+}
+
+
+@keyframes jobsOrbFloat {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  30% {
+    transform:
+      translate3d(45px, -30px, 0)
+      scale(1.08);
+  }
+
+  60% {
+    transform:
+      translate3d(-30px, 35px, 0)
+      scale(0.95);
+  }
+
+  80% {
+    transform:
+      translate3d(20px, 10px, 0)
+      scale(1.03);
+  }
+
+}
+
+
+/* =========================
+   JOBS RINGS
+========================= */
+
+.jobs-ring {
+
+  position: absolute;
+
+  border-radius: 9999px;
+
+  border:
+    1px solid
+    rgba(19, 138, 67, 0.1);
+
+  pointer-events: none;
+
+  animation:
+    jobsRingFloat
+    18s
+    ease-in-out
+    infinite;
+}
+
+
+.jobs-ring-one {
+
+  width: 180px;
+  height: 180px;
+
+  top: 120px;
+  left: 8%;
+}
+
+
+.jobs-ring-two {
+
+  width: 280px;
+  height: 280px;
+
+  right: 7%;
+  bottom: 100px;
+
+  animation-delay: -7s;
+}
+
+
+@keyframes jobsRingFloat {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translate3d(20px, -25px, 0)
+      rotate(8deg);
+  }
+
+}
+
+
+/* =========================
+   JOBS DOTS
+========================= */
+
+.jobs-dot {
+
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 9999px;
+
+  background: #138a43;
+
+  opacity: 0.25;
+
+  animation:
+    jobsDotFloat
+    7s
+    ease-in-out
+    infinite;
+}
+
+
+.jobs-dot-one {
+  top: 180px;
+  left: 20%;
+}
+
+
+.jobs-dot-two {
+
+  top: 320px;
+  right: 18%;
+
+  animation-delay: -2s;
+}
+
+
+.jobs-dot-three {
+
+  bottom: 180px;
+  left: 12%;
+
+  animation-delay: -4s;
+}
+
+
+.jobs-dot-four {
+
+  bottom: 280px;
+  right: 28%;
+
+  animation-delay: -1s;
+}
+
+
+@keyframes jobsDotFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-25px);
+
+    opacity: 0.55;
+  }
+
+}
+
+
+/* =========================
+   TEXT SELECTION
+========================= */
+
+::selection {
+
+  background: #138a43;
+
+  color: white;
+}
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-blob,
+  .hero-circle,
+  .hero-dot,
+  .ticker-track,
+  .jobs-orb,
+  .jobs-ring,
+  .jobs-dot {
+    animation: none;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 640px) {
+
+  .ticker-track {
+
+    gap: 24px;
+
+    padding: 13px 0;
+
+    animation-duration: 18s;
+  }
+
+  .ticker-track span {
+
+    gap: 24px;
+
+    font-size: 1.05rem;
+  }
+
+  .hero-circle-one {
+
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-circle-two {
+
+    width: 180px;
+    height: 180px;
+  }
+/* =========================
+   MOBILE FILTER BOTTOM SHEET
+========================= */
+
+@keyframes bottomSheetUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-bottom-sheet {
+  animation: bottomSheetUp 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================
+   MOBILE FILTER SCROLLBAR
+========================= */
+
+.animate-bottom-sheet::-webkit-scrollbar {
+  width: 4px;
+}
+
+.animate-bottom-sheet::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.animate-bottom-sheet::-webkit-scrollbar-thumb {
+  background: #d8dce0;
+  border-radius: 999px;
+}
+
+
+/* =========================
+   BODY WHEN SHEET OPEN
+========================= */
+
+@media (max-width: 1023px) {
+  .animate-bottom-sheet {
+    overscroll-behavior: contain;
+  }
+}
+/* =========================
+   PROFILE BACKGROUND
+========================= */
+
+.profile-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.28;
+  pointer-events: none;
+  animation: profileFloat 14s ease-in-out infinite;
+}
+
+.profile-orb-one {
+  width: 380px;
+  height: 380px;
+  background: #9bc5ff;
+  top: 100px;
+  right: -180px;
+}
+
+.profile-orb-two {
+  width: 320px;
+  height: 320px;
+  background: #a8e6cf;
+  left: -140px;
+  top: 45%;
+  animation-delay: -5s;
+}
+
+.profile-orb-three {
+  width: 280px;
+  height: 280px;
+  background: #c7b8ff;
+  right: 35%;
+  bottom: -150px;
+  animation-delay: -9s;
+}
+
+@keyframes profileFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate3d(35px, -25px, 0) scale(1.06);
+  }
+
+  66% {
+    transform: translate3d(-25px, 30px, 0) scale(0.95);
+  }
+}
+
+.profile-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(15, 23, 42, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.04) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    transparent 85%
+  );
+}
+/* =========================
+   PROFILE INPUTS
+========================= */
+
+.profile-input {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fafc;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #0f172a;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.profile-input:focus {
+  border-color: #138a43;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(19, 138, 67, 0.08);
+}
+
+.profile-input::placeholder {
+  color: #94a3b8;
+}
+}
